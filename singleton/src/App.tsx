@@ -1,24 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// Top level imports
+import { ReactElement, FormEvent, useState } from "react";
 
-function App() {
+// Components
+import { Panel } from "./Panel";
+
+// Global state instance
+import { default as globalState } from "./global-state";
+
+import "./app.css";
+
+function App(): ReactElement {
+  const [selectedColor, setSelectedColor] = useState(globalState.getProperty('color'));
+
+  const handleColorChange = (event: FormEvent<HTMLInputElement>) => {
+    const value = (event.target as HTMLInputElement).value;
+
+    globalState.setProperty('color', value);
+
+    setSelectedColor(globalState.getProperty('color'));
+  }
+  // Main JSX
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <div className="global-state">
+        <h3>Global State</h3>
+        <h4>Color : {selectedColor} </h4>
+        <div
+          className="color-preview"
+          style={{
+            backgroundColor: selectedColor,
+          }}
+        />
+        <span id="selected-color"></span>
+      </div>
+      <div className="contents">
+        <Panel
+          title="Component A"
+          colorAlias={selectedColor}
+          onColorChange={handleColorChange}
+        />
+        <Panel
+          title="Component B"
+          colorAlias={selectedColor}
+          onColorChange={handleColorChange}
+        />
+      </div>
     </div>
   );
 }

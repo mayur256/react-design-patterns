@@ -1,0 +1,30 @@
+body {
+  font-family: sans-serif;
+}
+
+.contents {
+  display: flex;
+  flex-direction: row;
+}
+
+.color-preview {
+  margin: 0 auto;
+  height: 100px;
+  max-width: 200px
+}
+
+.global-state {
+  display: block;
+  border: 2px solid #cacaca;
+  text-align: center;
+  padding: 20px;
+}
+.component-a,
+.component-b {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #cacaca;
+  padding: 20px;
+}
