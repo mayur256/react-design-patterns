@@ -17,7 +17,7 @@ export function Products({ products = [] }: IProps): ReactElement {
     return (
         <div className="h-full flex flex-wrap justify-center">
             {products.map((product: IProduct) => (
-                <Product product={product} />
+                <Product key={`${product.title}-${product.id}`} product={product} />
             ))}
         </div>
     )

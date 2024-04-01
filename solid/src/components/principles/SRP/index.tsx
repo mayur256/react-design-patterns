@@ -1,44 +1,23 @@
 // Top level imports
-import { ReactElement, useState, useEffect, useMemo } from "react";
+import { ReactElement } from "react";
 
-import axios from "axios";
+// Custom hooks
+import { useFilteredProducts } from "../../../hooks/useFilteredProducts";
+
 import { Rating } from "react-simple-star-rating";
 
 // Constituent components
 import { Products } from "./Products";
 
 // types
-import type { IProduct } from "../../../utils/types";
+// import type { IProduct } from "../../../utils/types";
 
 
 // component definition
 export function SRP(): ReactElement {
-    const [products, setProducts] = useState<Array<IProduct>>([]);
-    const [filterRate, setFilterRate] = useState<number>(1);
 
-    const fetchProducts = async () => {
-        const response = await axios.get(
-            "https://fakestoreapi.com/products"
-        );
-
-        if (response && response.data) setProducts(response.data);
-    };
-
-    useEffect(() => {
-        fetchProducts();
-    }, []);
-
-    const handleRating = (rate: number) => {
-        setFilterRate(rate);
-    };
-
-    const filteredProducts = useMemo(
-        () =>
-            products.filter(
-                (product: any) => product.rating.rate > filterRate
-            ),
-        [products, filterRate]
-    );
+    // hooks
+    const { products, handleRating, filterRate } = useFilteredProducts();
 
     return (
         <div className="flex flex-col h-full">
@@ -51,7 +30,7 @@ export function SRP(): ReactElement {
                 />
             </div>
 
-            <Products products={filteredProducts} />
+            <Products products={products} />
         </div>
     );
 }
