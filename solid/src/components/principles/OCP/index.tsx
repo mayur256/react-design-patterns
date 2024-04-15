@@ -1,3 +1,9 @@
+
+/**
+ * OCP (Open Closed Principle) maintains that a component should be open for extension, but closed for modification.
+ * This principle is very well adapted by composition feature of React. It advocates Composition over Inheritance
+ */
+
 import { ReactElement } from "react";
 
 import {

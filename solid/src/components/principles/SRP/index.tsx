@@ -1,3 +1,8 @@
+/**
+ * SRP dictates that a component be it function or class should have only one responsibility.
+ * The SRP encourages us to fragment our code, from monolithic files containing thousands of lines, into dozens of smaller 50-250 line files.
+ */
+
 // Top level imports
 import { ReactElement } from "react";
 
