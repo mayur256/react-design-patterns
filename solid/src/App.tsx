@@ -8,6 +8,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { SRP } from "./components/principles/SRP";
 import { OCP } from "./components/principles/OCP";
 import { LSP } from "./components/principles/LSP";
+import { ISP } from "./components/principles/ISP";
 
 const router = createBrowserRouter([
     {
@@ -16,7 +17,8 @@ const router = createBrowserRouter([
         children: [
             { path: 'srp', element: <SRP /> },
             { path: 'ocp', element: <OCP /> },
-            { path: 'lsp', element: <LSP /> }
+            { path: 'lsp', element: <LSP /> },
+            { path: 'isp', element: <ISP /> }
         ]
     },
 ])
